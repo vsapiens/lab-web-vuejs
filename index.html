@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+  <!--<![endif]-->
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Welcome to the HomePage</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="index.js" />
+    <!-- development version, includes helpful console warnings -->
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"
+    ></script>
+  </head>
+  <body>
+    <div id="app">
+      <h1>{{message}}</h1>
+      <input @keyup.enter="addNameEnter" v-model="name" />
+      <button v-on:click="addNameClick">Change Name</button>
+      <h2>Stats</h2>
+      <p>Change by Enter: {{counter1}}</p>
+      <p>Change by Click: {{counter2}}</p>
+      <h2>Credentials</h2>
+      <p>admin: <span v-if="seen">admin</span></p>
+      <p>password: <span v-if="seen">1234</span></p>
+      <button v-on:click="changeSeen">Show Credentials</button>
+      <h2>Registered Users</h2>
+      <ol>
+        <li v-for="user in users">
+          {{ user.name }}
+        </li>
+      </ol>
+      <h2>TO-DO List</h2>
+      <ol>
+        <todo-item
+          v-for="item in todoList"
+          v-bind:todo="item"
+          v-bind:key="item.id"
+        ></todo-item>
+      </ol>
+      <p>TO-DO to be added: {{product}}</p>
+        <input v-model="product" />
+        <button v-on:click="addProduct">Add Product</button>
+      </p>
+    </div>
+
+    <script src="vue.js" async defer></script>
+  </body>
+</html>
